@@ -4,7 +4,8 @@ import ProductView from './ProductView';
 
 const Wrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(220px, 1fr));
+    justify-items: center;
     margin: 20px;
     margin-top: 50px;
     padding: 10px;
@@ -12,12 +13,10 @@ const Wrapper = styled.div`
 `;
 
 const ProductItem = styled.div`
-    & > img {
-        padding: 5px;
-        width: 200px;
-        height: 200px;
-        overflow: hidden;
-    }
+    height: 200px;
+    width: 200px;
+    margin: 5px;
+    background: url(${props => props.image}) 50% 50% no-repeat; /* 50% 50% centers image in div */
 `;
 
 
@@ -44,9 +43,7 @@ class ProductListing extends Component {
     renderProducts(products) {
         return products.map(product => {
             return (
-                <ProductItem onClick={() => this.onSelection(product)}>
-                    <img src={product.image} />
-                </ProductItem>
+                <ProductItem onClick={() => this.onSelection(product)} image={product.image} />
             )
         })
     }

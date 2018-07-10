@@ -114,6 +114,6 @@ const productList = [
     price: "$100",
     image: "http://via.placeholder.com/450x250"
   }
-]
+];
 
 export default App;
