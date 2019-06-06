@@ -26,6 +26,12 @@ class ProductView extends Component {
         ordering: false
     }
 
+    handlePurchaseClose = () => {
+        this.setState({
+            ordering: false
+        });
+    }
+
     handlePurchase = (e) => {
         e.preventDefault();
         let { id, image, date, description, name, price } = this.props.product;
@@ -66,7 +72,7 @@ class ProductView extends Component {
                     <span>{price}</span>
                     <Button positive onClick={this.handlePurchase} icon='cart' labelPosition='right' content='Purchase' />
                 </Modal.Actions>
-                {this.state.ordering ? <OrderForm product={product} /> : ''}
+                {this.state.ordering ? <OrderForm product={product} onClose={this.handlePurchaseClose} /> : ''}
             </StyledModal>
         )
     }
